@@ -1,0 +1,62 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 120px;
+    padding: 69px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 12px;
+}
+
+
+.Form-Element {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.Element {
+    padding: 12px 33px;
+    border-radius: 8px;
+    border: none;
+    border: 1px solid;
+
+}
+
+.form-btn {
+    padding: 12px 43px;
+    font-size: larger;
+    font-family: 'Hanken Grotesk';
+}
+
+
+.Patients-Forms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 55px;
+}
+
+
+.patient{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 41px;
+    border-radius: 12px;
+}
+
+.patient-btn{
+   
+        display: flex;
+        gap: 13px;
+        padding: 12px;
+    
+}
+.patient-btn-one{
+    padding: 5px 15px;
+    border: 1px solid;
+    border-radius: 8px;
+    font-family: 'Hanken Grotesk';
+    font-weight: 700;
+}
