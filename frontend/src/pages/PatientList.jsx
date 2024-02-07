@@ -25,7 +25,7 @@ const PatientList = memo(() => {
   useEffect(() => {
     async function fetchPatients() {
       try {
-        const response = await fetch(`http://localhost:5000/patients?id=${localStorage.getItem('User_id')}`);
+        const response = await fetch(`https://alive-eel-pants.cyclic.app/patients?id=${localStorage.getItem('User_id')}`);
         const data = await response.json();
         setPatients(data);
       } catch (error) {
@@ -55,7 +55,7 @@ const PatientList = memo(() => {
   const handleDelete = async (patientId) => {
     console.log(`Deleting patient with ID ${patientId}`);
     try {
-      const response = await axios.delete(`http://localhost:5000/patients/${patientId}`);
+      const response = await axios.delete(`https://alive-eel-pants.cyclic.app/patients/${patientId}`);
 
       console.log(response.data);
       window.location.reload();
@@ -74,7 +74,7 @@ const PatientList = memo(() => {
     console.log('Updated patient data:', selectedPatient);
     try {
 
-      const response = await fetch(`http://localhost:5000/patients/${selectedPatient._id}`, {
+      const response = await fetch(`https://alive-eel-pants.cyclic.app/patients/${selectedPatient._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -83,6 +83,7 @@ const PatientList = memo(() => {
       });
       const data = await response.json();
       console.log('Updated patient data:', data);
+      window.location.reload();
     } catch (error) {
       console.error('Error updating patient data:', error);
 

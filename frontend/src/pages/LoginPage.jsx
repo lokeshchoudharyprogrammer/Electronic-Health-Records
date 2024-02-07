@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/auth/login", {
+    fetch("https://alive-eel-pants.cyclic.app/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

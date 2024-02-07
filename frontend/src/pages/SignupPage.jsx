@@ -18,7 +18,7 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     console.log(email, password)
     e.preventDefault();
-    fetch("http://localhost:5000/auth/signup", {
+    fetch("https://alive-eel-pants.cyclic.app/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
