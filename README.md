@@ -87,4 +87,4 @@ Once the application is running, you can access it in your web browser. Use the 
   - React: Frontend framework
   - Node.js: JavaScript runtime
 - **Chakra UI**: Component library for React
-- **Other Dependencies**: List any other technologies, libraries, or tools used in your project.
+
