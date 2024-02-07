@@ -4,7 +4,7 @@ exports.getAllPatients = async (req, res) => {
   let id = req.query.id
   console.log(id)
   try {
-    const patients = await Patient.find({UserID:id});
+    const patients = await Patient.find({ UserID: id });
     res.status(200).json(patients);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -31,17 +31,22 @@ exports.createPatient = async (req, res) => {
   }
 };
 
-
 exports.updatePatient = async (req, res) => {
-console.log(req.body)
   try {
-    Object.assign(res.patient, req.body);
-    const updatedPatient = await res.patient.save();
+    const patientId = req.params.id;
+    const updatedPatientData = req.body;
+    console.log(updatedPatientData)
+    const updatedPatient = await Patient.updateOne(
+      { _id: updatedPatientData._id },
+      { $set: updatedPatientData }
+    );
+
     res.json(updatedPatient);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
+
 
 
 exports.deletePatient = async (req, res) => {

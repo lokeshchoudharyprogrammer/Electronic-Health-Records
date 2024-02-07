@@ -65,8 +65,8 @@ const Navbar = () => {
               <Link to="/dashboard">
                 <Button variant="ghost" onClick={onClose}>Dashboard</Button>
               </Link>
-              <Button variant="ghost" onClick={() => { onClose(); logout(); }}>LogOut</Button>
-
+              {localStorage.getItem('User_id') ? <Button variant="ghost" onClick={() => { onClose(); logout(); }}>LogOut</Button> : null
+              }
             </Stack>
           </DrawerBody>
         </DrawerContent>

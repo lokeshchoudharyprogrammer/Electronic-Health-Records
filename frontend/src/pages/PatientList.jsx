@@ -25,7 +25,7 @@ const PatientList = memo(() => {
   useEffect(() => {
     async function fetchPatients() {
       try {
-        const response = await fetch(`https://alive-eel-pants.cyclic.app/patients?id=${localStorage.getItem('User_id')}`);
+        const response = await fetch(`http://localhost:5000/patients?id=${localStorage.getItem('User_id')}`);
         const data = await response.json();
         setPatients(data);
       } catch (error) {
@@ -37,31 +37,15 @@ const PatientList = memo(() => {
 
   const handleEdit = async (patient) => {
     setSelectedPatient(patient);
-    console.log(patient)
+
     openModal();
-    editdata(patient._id, patient)
+
 
 
   };
 
 
-  const editdata = async (id, patient) => {
 
-    try {
-   
-      const response = await fetch(`https://alive-eel-pants.cyclic.app/patients/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(patient),
-      });
-      const data = await response.json();
-      console.log('Updated patient data:', data);
-     } catch (error) {
-      console.error('Error updating patient data:', error);
-    }
-  }
 
   const handleViewDetails = (patient) => {
     setSelectedPatient(patient);
@@ -71,11 +55,12 @@ const PatientList = memo(() => {
   const handleDelete = async (patientId) => {
     console.log(`Deleting patient with ID ${patientId}`);
     try {
-      const response = await axios.delete(`https://alive-eel-pants.cyclic.app/patients/${patientId}`);
+      const response = await axios.delete(`http://localhost:5000/patients/${patientId}`);
 
       console.log(response.data);
       window.location.reload();
     } catch (error) {
+      // If there's an error with the delete request
       console.error('Error deleting patient:', error);
 
     }
@@ -83,9 +68,25 @@ const PatientList = memo(() => {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-     console.log('Updated patient data:', selectedPatient);
+
+    console.log('Updated patient data:', selectedPatient);
+    try {
+
+      const response = await fetch(`http://localhost:5000/patients/${selectedPatient._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(selectedPatient),
+      });
+      const data = await response.json();
+      console.log('Updated patient data:', data);
+    } catch (error) {
+      console.error('Error updating patient data:', error);
+
+    }
     closeModal();
   };
   console.log(patients)
@@ -148,7 +149,7 @@ const PatientList = memo(() => {
             </ModalBody>
             {selectedPatient && (
               <ModalFooter>
-                <Button colorScheme="blue" onClick={editdata}>Save Changes</Button>
+                <Button colorScheme="blue" type="submit" >Save Changes</Button>
               </ModalFooter>
             )}
           </form>

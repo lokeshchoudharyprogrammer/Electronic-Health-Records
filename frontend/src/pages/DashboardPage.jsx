@@ -28,7 +28,7 @@ const DashboardPage = () => {
     console.log(formData)
     e.preventDefault();
     try {
-      const response = await fetch('https://alive-eel-pants.cyclic.app/patients', {
+      const response = await fetch('http://localhost:5000/patients', {
         method: "POST",
         headers: {
           "Content-type": "application/json",
