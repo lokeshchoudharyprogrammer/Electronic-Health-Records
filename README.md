@@ -8,7 +8,6 @@ Welcome to Electronic Health Records (EHR)! This is a web application for managi
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Project Description
